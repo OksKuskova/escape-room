@@ -1,3 +1,5 @@
+import QuestCardList from '../../components/quest-card-list/quest-card-list';
+
 function MainPage(): JSX.Element {
   return (
     <main className="page-content">
@@ -90,32 +92,7 @@ function MainPage(): JSX.Element {
           </form>
         </div>
         <h2 className="title visually-hidden">Выберите квест</h2>
-        <div className="cards-grid">
-          <div className="quest-card">
-            <div className="quest-card__img">
-              <picture>
-                <source type="image/webp" srcSet="img/content/mars/mars-size-s.webp, img/content/mars/mars-size-s@2x.webp 2x"></source>
-                <img src="img/content/mars/mars-size-s.jpg" srcSet="img/content/mars/mars-size-s@2x.jpg 2x" width="344" height="232" alt="Сюрреалистичное изображение человека."></img>
-              </picture>
-            </div>
-            <div className="quest-card__content">
-              <div className="quest-card__info-wrapper"><a className="quest-card__link" href="quest.html">Марс-2056</a>
-              </div>
-              <ul className="tags quest-card__tags">
-                <li className="tags__item">
-                  <svg width="11" height="14" aria-hidden="true">
-                    <use xlinkHref="#icon-person"></use>
-                  </svg>2&ndash;4&nbsp;чел
-                </li>
-                <li className="tags__item">
-                  <svg width="14" height="14" aria-hidden="true">
-                    <use xlinkHref="#icon-level"></use>
-                  </svg>Лёгкий
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <QuestCardList />
       </div>
     </main>
   );
