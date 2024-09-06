@@ -1,22 +1,20 @@
 import { ShortQuest } from '../../type/quest';
 import { AppRoute, filterLevelList } from '../../const';
 import { Link } from 'react-router-dom';
+import QuestCardImage from '../quest-image/quest-image';
 
 type QuestCardProps = {
-  quest: ShortQuest;
+	quest: ShortQuest;
 }
 
-function QuestCard({quest}: QuestCardProps): JSX.Element {
+function QuestCard({ quest }: QuestCardProps): JSX.Element {
 
   const { id, title, level, previewImg, previewImgWebp, peopleMinMax: [min, max] } = quest;
 
   return (
     <div className="quest-card">
       <div className="quest-card__img">
-        <picture>
-          <source type="image/webp" srcSet={`${previewImgWebp}, ${previewImgWebp} 2x`}></source>
-          <img src={previewImg} srcSet={`${previewImg} 2x`} width="344" height="232" alt={title}></img>
-        </picture>
+        <QuestCardImage previewImg={previewImg} previewImgWebp={previewImgWebp} />
       </div>
       <div className="quest-card__content">
         <div className="quest-card__info-wrapper">

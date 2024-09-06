@@ -16,3 +16,7 @@ export type Quest = {
 }
 
 export type ShortQuest = Omit<Quest, 'description' | 'coverImg' | 'coverImgWebp'>
+
+export type PreviewImg = Pick<Quest, 'previewImg' | 'previewImgWebp'>
+
+export type CoverImg = Pick<Quest, 'coverImg' | 'coverImgWebp'>

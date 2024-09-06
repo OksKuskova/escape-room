@@ -40,3 +40,22 @@ export const filterLevelList = {
   'hard': 'Сложный',
 };
 
+export const filterGenreList = {
+  'all': 'Все квесты',
+  'adventures': 'Приключения',
+  'horror': 'Ужасы',
+  'mystic': 'Мистика',
+  'detective': 'Детектив',
+  'sci-fi': 'Sci-fi',
+};
+
+export const ImageSize = {
+  Preview: {
+    WIDTH: 344,
+    HEIGHT: 232,
+  },
+  Cover: {
+    WIDTH: 1366,
+    HEIGHT: 768,
+  }
+};
