@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AppRoute } from '../../const';
-import { getAuthorizationStatus } from '../../utils';
 import Layout from '../layout/layout';
 import MainPage from '../../pages/main-page/main-page';
 import Quest from '../../pages/quest/quest';
@@ -10,10 +9,11 @@ import Contacts from '../../pages/contacts/contacts';
 import MyQuests from '../../pages/my-quests/my-quests';
 import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
-
-const status = getAuthorizationStatus();
+import { useAuthorization } from '../../hooks/use-authorization';
 
 function App(): JSX.Element {
+  const { authorizationStatus } = useAuthorization();
+
   return(
     <BrowserRouter>
       <Routes>
@@ -21,20 +21,20 @@ function App(): JSX.Element {
           <Route index element={<MainPage />} />
           <Route path={AppRoute.Quest} element={<Quest />} />
           <Route path={AppRoute.Booking} element={
-            <PrivateRoute authorizationStatus={status}>
+            <PrivateRoute authorizationStatus={authorizationStatus}>
               <Booking />
             </PrivateRoute>
           }
           />
           <Route path={AppRoute.Login} element={
-            <PrivateRoute authorizationStatus={status} onlyGuests>
+            <PrivateRoute authorizationStatus={authorizationStatus} onlyGuests>
               <Login />
             </PrivateRoute>
           }
           />
           <Route path={AppRoute.Contacts} element={<Contacts />} />
           <Route path={AppRoute.MyQuests} element={
-            <PrivateRoute authorizationStatus={status}>
+            <PrivateRoute authorizationStatus={authorizationStatus}>
               <MyQuests />
             </PrivateRoute>
           }
