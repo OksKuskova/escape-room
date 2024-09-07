@@ -1,4 +1,30 @@
+import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
+import { getReservationPlaces } from '../../mocks/reservation-places';
+import { MapPoint } from '../../type/reservation';
+import Map from '../../components/map/map';
+import { useActivePlace } from '../../hooks/use-active-place';
+import BookingAddress from '../../components/booking-address/booking-address';
+import { AppRoute } from '../../const';
+
 function Booking(): JSX.Element {
+  const places = getReservationPlaces();
+  const mapPoints: MapPoint[] = places.map(({id, location: {coords}}) => ({id, coords}));
+
+  const [ activePointId, setActivePointId ] = useState<string>(mapPoints[0].id);
+
+  const activePlace = useActivePlace(activePointId);
+
+  if (!activePlace) {
+    return <Navigate to={AppRoute.Error} />;
+  }
+
+  const { location, slots: {today, tomorrow} } = activePlace;
+
+  const handleMapMarkerClick = (pointId: string) => {
+    setActivePointId(pointId);
+  };
+
   return (
     <main className="page-content decorated-page">
       <div className="decorated-page__decor" aria-hidden="true">
@@ -16,9 +42,9 @@ function Booking(): JSX.Element {
         <div className="page-content__item">
           <div className="booking-map">
             <div className="map">
-              <div className="map__container"></div>
+              <Map points={mapPoints} activePointId={activePointId} onMapMarkerClick={handleMapMarkerClick} />
             </div>
-            <p className="booking-map__address">Вы&nbsp;выбрали: наб. реки Карповки&nbsp;5, лит&nbsp;П, м. Петроградская</p>
+            <BookingAddress address={location.address} />
           </div>
         </div>
         <form className="booking-form" action="https://echo.htmlacademy.ru/" method="post">
