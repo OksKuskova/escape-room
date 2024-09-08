@@ -28,9 +28,9 @@ export enum QuestType {
   'sci-fi',
 }
 
-export enum Date {
-  'today',
-  'tomorrow',
+export enum Day {
+  'today' = 'today',
+  'tomorrow' = 'tomorow',
 }
 
 export const filterLevelList = {

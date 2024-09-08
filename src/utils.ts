@@ -1,4 +1,4 @@
-import { AuthorizationStatus } from './const';
+import { AuthorizationStatus, Day } from './const';
 
 export const getAuthorizationStatus = () => AuthorizationStatus.Auth;
 
@@ -8,9 +8,9 @@ export const changeTimeFormat = (time: string) => {
   return `${hours}h${minutes}m`;
 };
 
-export const getSlotKeyValue = (key: string) => {
+export const getSlotKeyValue = (key: Day) => {
   switch(key) {
-    case 'today': return 'Сегодня';
-    case 'tomorrow': return 'Завтра';
+    case Day.today: return 'Сегодня';
+    case Day.tomorrow: return 'Завтра';
   }
 };
