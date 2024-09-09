@@ -1,16 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { createApi } from '../services/api';
+import questsSlice from './quests/quests';
 
 const api = createApi();
 
-// const reducer = combineReducers({
-//   [offersSlice.name]: offersSlice.reducer,
-//   [fullOfferSlice.name]: fullOfferSlice.reducer,
-//   [reviewSlice.name]: reviewSlice.reducer,
-//   [userSlice.name]: userSlice.reducer,
-//   [favoritesSlice.name]: favoritesSlice.reducer,
-//   [errorSlice.name]: errorSlice.reducer,
-// });
+const reducer = combineReducers({
+  [questsSlice.name]: questsSlice.reducer,
+});
 
 export const store = configureStore({
   reducer,

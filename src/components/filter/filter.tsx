@@ -8,13 +8,13 @@ function Filter(): JSX.Element {
       <fieldset className="filter__section">
         <legend className="visually-hidden">Тематика</legend>
         <ul className="filter__list">
-          {Object.entries(filterGenreList).map(([key, value]) => <GenreItem key={key} atributeName={key} genreName={value} />)}
+          {Object.entries(filterGenreList).map(([key, value]) => <GenreItem key={key} genre={key} value={value} />)}
         </ul>
       </fieldset>
       <fieldset className="filter__section">
         <legend className="visually-hidden">Сложность</legend>
         <ul className="filter__list">
-          {Object.entries(filterLevelList).map(([key, value]) => <LevelItem key={key} atributeName={key} level={value} />)}
+          {Object.entries(filterLevelList).map(([key, value]) => <LevelItem key={key} level={key} value={value} />)}
         </ul>
       </fieldset>
     </form>

@@ -23,7 +23,7 @@ export enum Level {
 
 export enum QuestGenre {
   'all' = 'all',
-  'adventure' = 'adventure',
+  'adventures' = 'adventures',
   'horror' = 'horror',
   'mystic' = 'mystic',
   'detective' = 'detective',
@@ -35,19 +35,22 @@ export enum Day {
   'tomorrow' = 'tomorrow',
 }
 
+export const GENRE_FILTER_DEFAULT = QuestGenre.all;
+export const LEVEL_FILTER_DEFAULT = Level.any;
+
 export const filterLevelList = {
-  [Level['any']]: 'Любой',
-  [Level['easy']]: 'Лёгкий',
-  [Level['medium']]: 'Средний',
-  [Level['hard']]: 'Сложный',
+  [Level.any]: 'Любой',
+  [Level.easy]: 'Лёгкий',
+  [Level.medium]: 'Средний',
+  [Level.hard]: 'Сложный',
 };
 
 export const filterGenreList = {
-  [QuestGenre['all']]: 'Все квесты',
-  [QuestGenre['adventure']]: 'Приключения',
-  [QuestGenre['horror']]: 'Ужасы',
-  [QuestGenre['mystic']]: 'Мистика',
-  [QuestGenre['detective']]: 'Детектив',
+  [QuestGenre.all]: 'Все квесты',
+  [QuestGenre.adventures]: 'Приключения',
+  [QuestGenre.horror]: 'Ужасы',
+  [QuestGenre.mystic]: 'Мистика',
+  [QuestGenre.detective]: 'Детектив',
   [QuestGenre['sci-fi']]: 'Sci-fi',
 };
 

@@ -1,18 +1,26 @@
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { getLevelFilter, setLevelFilter } from '../../../store/quests/quests';
+
 type LevelItemProps = {
-  atributeName: string;
   level: string;
+  value: string;
 }
 
-function LevelItem({atributeName, level}: LevelItemProps): JSX.Element {
+function LevelItem({level, value}: LevelItemProps): JSX.Element {
+  const dispatch = useAppDispatch();
+
+  const activeLevel = useAppSelector(getLevelFilter);
   return (
     <li className="filter__item">
       <input
         type="radio"
         name="level"
-        id={atributeName}
+        id={level}
+        checked = {activeLevel === level}
+        onChange={() => dispatch(setLevelFilter(level))}
       >
       </input>
-      <label className="filter__label" htmlFor={atributeName}><span className="filter__label-text">{level}</span>
+      <label className="filter__label" htmlFor={level}><span className="filter__label-text">{value}</span>
       </label>
     </li>
   );

@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import axios, { AxiosInstance, InternalAxiosRequestConfig } from 'axios';
 import { getToken } from './token';
 import { ApiDefault } from './const';
 
@@ -9,7 +9,7 @@ export const createApi = (): AxiosInstance => {
   });
 
   api.interceptors.request.use(
-    (config: AxiosRequestConfig) => {
+    (config: InternalAxiosRequestConfig) => {
       const token = getToken();
       if (token && config.headers) {
         config.headers['X-Token'] = token;
