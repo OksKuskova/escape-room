@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from '.';
 import { getQuests, getStatus, getGenreFilter, getLevelFilter } from '../store/quests/quests';
 import { getFilteredQuests } from '../utils';
 import { RequestStatus } from '../store/const';
-import { fetchQuests } from '../store/quests/quests-thank';
+import { fetchQuests } from '../store/quests/quests-thunk';
 import { useEffect } from 'react';
 
 export function useQuestsByFilter() {

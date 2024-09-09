@@ -1,5 +1,6 @@
 export enum SliceName {
   Quests = 'quests',
+  FullQuest = 'full-quest',
 }
 export enum ApiRoute {
   Quest = 'quest',

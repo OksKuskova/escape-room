@@ -1,19 +1,33 @@
-import { Navigate, useParams, Link } from 'react-router-dom';
-import { getQuestById } from '../../mocks/quests';
+import { useParams, Link } from 'react-router-dom';
+// import { getQuestById } from '../../mocks/quests';
 import { AppRoute, filterGenreList, filterLevelList } from '../../const';
 import QuestImage from '../../components/quest-image/quest-image';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { getQuest, getStatus } from '../../store/full-quest/full-quest';
+import { fetchFullQuest } from '../../store/full-quest/full-quest-thunk';
+import { RequestStatus } from '../../store/const';
+import NotFound from '../not-found/not-found';
+import Loader from '../../components/loader/loader';
 
 function Quest(): JSX.Element {
+  const dispatch = useAppDispatch();
+
+  const quest = useAppSelector(getQuest);
+  const status = useAppSelector(getStatus);
+
   const { id: questId } = useParams();
 
-  if (!questId) {
-    return <Navigate to={AppRoute.Error} />;
+  useEffect(() => {
+    dispatch(fetchFullQuest(questId as string));
+  }, [dispatch, questId]);
+
+  if (status === RequestStatus.Loading) {
+    return <Loader />;
   }
 
-  const quest = getQuestById(questId);
-
-  if (!quest) {
-    return <Navigate to={AppRoute.Error} />;
+  if (status === RequestStatus.Failed || !quest) {
+    return <NotFound />;
   }
 
   const { id, title, level, type: genre, previewImg, previewImgWebp, coverImg, coverImgWebp, peopleMinMax: [min, max], description } = quest;
