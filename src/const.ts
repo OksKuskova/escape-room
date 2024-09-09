@@ -15,38 +15,40 @@ export enum AuthorizationStatus {
 }
 
 export enum Level {
-  'easy',
-  'medium',
-  'hard',
+  'any' = 'any',
+  'easy' = 'easy',
+  'medium' = 'medium',
+  'hard' = 'hard',
 }
 
-export enum QuestType {
-  'adventures',
-  'horror',
-  'mystic',
-  'detective',
-  'sci-fi',
+export enum QuestGenre {
+  'all' = 'all',
+  'adventure' = 'adventure',
+  'horror' = 'horror',
+  'mystic' = 'mystic',
+  'detective' = 'detective',
+  'sci-fi' = 'sci-fi',
 }
 
 export enum Day {
   'today' = 'today',
-  'tomorrow' = 'tomorow',
+  'tomorrow' = 'tomorrow',
 }
 
 export const filterLevelList = {
-  'any': 'Любой',
-  'easy': 'Лёгкий',
-  'medium': 'Средний',
-  'hard': 'Сложный',
+  [Level['any']]: 'Любой',
+  [Level['easy']]: 'Лёгкий',
+  [Level['medium']]: 'Средний',
+  [Level['hard']]: 'Сложный',
 };
 
 export const filterGenreList = {
-  'all': 'Все квесты',
-  'adventures': 'Приключения',
-  'horror': 'Ужасы',
-  'mystic': 'Мистика',
-  'detective': 'Детектив',
-  'sci-fi': 'Sci-fi',
+  [QuestGenre['all']]: 'Все квесты',
+  [QuestGenre['adventure']]: 'Приключения',
+  [QuestGenre['horror']]: 'Ужасы',
+  [QuestGenre['mystic']]: 'Мистика',
+  [QuestGenre['detective']]: 'Детектив',
+  [QuestGenre['sci-fi']]: 'Sci-fi',
 };
 
 export const ImageSize = {

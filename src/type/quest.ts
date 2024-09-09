@@ -1,4 +1,4 @@
-import { Level, QuestType } from '../const';
+import { Level, QuestGenre } from '../const';
 
 type PeopleMinMax = [number, number]
 
@@ -8,7 +8,7 @@ export type Quest = {
   previewImg: string;
   previewImgWebp: string;
   level: keyof typeof Level ;
-  type: keyof typeof QuestType;
+  type: keyof typeof QuestGenre;
   peopleMinMax: PeopleMinMax;
   description: string;
   coverImg: string;
