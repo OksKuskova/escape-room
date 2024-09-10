@@ -1,11 +1,12 @@
 import { AuthorizationStatus } from '../const';
-import { getAuthorizationStatus } from '../utils';
+import { useAppSelector } from '.';
+import { getAuthorizationStatus } from '../store/user/user';
 
 export function useAuthorization() {
-  const authorizationStatus = getAuthorizationStatus();
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
   return {
     authorizationStatus,
-    hasAuthorization: authorizationStatus === AuthorizationStatus.Auth,
+    isAuthChecked: authorizationStatus !== AuthorizationStatus.Unknown,
   };
 }

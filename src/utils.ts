@@ -1,7 +1,5 @@
-import { AuthorizationStatus, Day, Level, QuestGenre } from './const';
+import { Day, Level, QuestGenre } from './const';
 import { ShortQuest } from './type/quest';
-
-export const getAuthorizationStatus = () => AuthorizationStatus.Auth;
 
 export const changeTimeFormat = (time: string) => {
   const splitTime = time.split(':');

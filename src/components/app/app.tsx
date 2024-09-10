@@ -9,10 +9,16 @@ import Contacts from '../../pages/contacts/contacts';
 import MyQuests from '../../pages/my-quests/my-quests';
 import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
+import Loader from '../loader/loader';
+
 import { useAuthorization } from '../../hooks/use-authorization';
 
 function App(): JSX.Element {
-  const { authorizationStatus } = useAuthorization();
+  const { isAuthChecked } = useAuthorization();
+
+  if (!isAuthChecked) {
+    return <Loader />;
+  }
 
   return(
     <BrowserRouter>
@@ -21,20 +27,20 @@ function App(): JSX.Element {
           <Route index element={<MainPage />} />
           <Route path={AppRoute.Quest} element={<Quest />} />
           <Route path={AppRoute.Booking} element={
-            <PrivateRoute authorizationStatus={authorizationStatus}>
+            <PrivateRoute>
               <Booking />
             </PrivateRoute>
           }
           />
           <Route path={AppRoute.Login} element={
-            <PrivateRoute authorizationStatus={authorizationStatus} onlyGuests>
+            <PrivateRoute onlyGuests>
               <Login />
             </PrivateRoute>
           }
           />
           <Route path={AppRoute.Contacts} element={<Contacts />} />
           <Route path={AppRoute.MyQuests} element={
-            <PrivateRoute authorizationStatus={authorizationStatus}>
+            <PrivateRoute>
               <MyQuests />
             </PrivateRoute>
           }
